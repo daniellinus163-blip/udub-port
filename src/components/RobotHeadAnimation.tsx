@@ -1,6 +1,7 @@
 "use client";
 
 import { Canvas, useFrame } from "@react-three/fiber";
+import { Line } from "@react-three/drei";
 import { useRef, useMemo, useEffect, useState } from "react";
 import * as THREE from "three";
 
@@ -51,13 +52,12 @@ function RobotHead({ isSpeaking, colorScheme }: { isSpeaking: boolean; colorSche
     return geometry;
   }, []);
 
-  // Create wire paths and materials
-  const { wireGeometries, wireMaterials: materials } = useMemo(() => {
-    const geometries: THREE.BufferGeometry[] = [];
-    const materials: THREE.LineBasicMaterial[] = [];
+  // Create wire paths
+  const wirePaths = useMemo(() => {
+    const paths: THREE.Vector3[][] = [];
     
     for (let i = 0; i < 8; i++) {
-      const points = [];
+      const points: THREE.Vector3[] = [];
       const angle = (i / 8) * Math.PI * 2;
       for (let j = 0; j < 20; j++) {
         const radius = 6.0 + Math.random() * 2.0;
@@ -68,23 +68,10 @@ function RobotHead({ isSpeaking, colorScheme }: { isSpeaking: boolean; colorSche
           Math.sin(angle) * radius
         ));
       }
-      const geometry = new THREE.BufferGeometry().setFromPoints(points);
-      const material = new THREE.LineBasicMaterial({
-        color: primaryColor,
-        transparent: true,
-        opacity: 0.4,
-        linewidth: 1
-      });
-      geometries.push(geometry);
-      materials.push(material);
+      paths.push(points);
     }
-    return { wireGeometries: geometries, wireMaterials: materials };
-  }, [primaryColor]);
-
-  // Store materials in ref for animation
-  useEffect(() => {
-    wireMaterials.current = materials;
-  }, [materials]);
+    return paths;
+  }, []);
 
   return (
     <group ref={groupRef}>
@@ -110,10 +97,13 @@ function RobotHead({ isSpeaking, colorScheme }: { isSpeaking: boolean; colorSche
 
       {/* Wires */}
       {wireGeometries.map((geometry, i) => (
-        <line
+        <Line
           key={i}
-          geometry={geometry}
-          material={materials[i]}
+          points={geometry.attributes.position.array as Float32Array}
+          color={primaryColor}
+          transparent
+          opacity={0.4}
+          lineWidth={1}
         />
       ))}
 
