@@ -168,7 +168,7 @@ export function VDLogoHero() {
         <motion.div
           initial={{ opacity: 0, y: 30 }}
           animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 1, ease: "power2.out" }}
+          transition={{ duration: 1, ease: "easeOut" }}
           className="absolute inset-0 flex items-center justify-center"
           style={{ pointerEvents: "none" }}
         >

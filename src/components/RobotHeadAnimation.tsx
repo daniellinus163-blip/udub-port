@@ -95,17 +95,17 @@ function RobotHead({ isSpeaking, colorScheme }: { isSpeaking: boolean; colorSche
         />
       </mesh>
 
-      {/* Wires */}
-      {wireGeometries.map((geometry, i) => (
-        <Line
-          key={i}
-          points={geometry.attributes.position.array as Float32Array}
-          color={primaryColor}
-          transparent
-          opacity={0.4}
-          lineWidth={1}
-        />
-      ))}
+   {/* Wires */}
+{wirePaths.map((points, i) => (
+  <Line
+    key={i}
+    points={points}
+    color={primaryColor}
+    transparent
+    opacity={0.4}
+    lineWidth={1}
+  />
+))}
 
       {/* Talking mouth */}
       <mesh ref={mouthRef} position={[0, -1.2, 6.0]}>
