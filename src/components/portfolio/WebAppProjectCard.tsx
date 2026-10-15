@@ -41,7 +41,7 @@ export function WebAppProjectCard({ project }: Props) {
   return (
     <motion.article
       ref={ref}
-      style={{ rotateX, rotateY, transformStyle: "preserve-3d" }}
+      style={{ rotateX, rotateY, transformStyle: "preserve-3d", backgroundColor: 'var(--surface-card)', boxShadow: '4px 4px 0px #000000' }}
       onMouseMove={onMove}
       onMouseLeave={() => {
         x.set(0);
@@ -49,7 +49,6 @@ export function WebAppProjectCard({ project }: Props) {
       }}
       whileHover={{ y: -4 }}
       className="group flex h-full flex-col overflow-hidden border-4 border-black transition-all hover:translate-x-[-2px] hover:translate-y-[-2px] hover:shadow-[6px_6px_0px_#000000]"
-      style={{ backgroundColor: 'var(--surface-card)', boxShadow: '4px 4px 0px #000000' }}
     >
       <div className={`bg-gradient-to-r ${accentGradients[project.accent]} p-[2px]`}>
         <div className="p-4" style={{ backgroundColor: 'var(--surface-card)' }}>
