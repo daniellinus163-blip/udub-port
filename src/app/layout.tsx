@@ -3,6 +3,7 @@ import { GradientBlobs } from "@/components/portfolio/GradientBlobs";
 import { Preloader } from "@/components/Preloader";
 import { SiteFooter } from "@/components/portfolio/SiteFooter";
 import { SiteHeader } from "@/components/portfolio/SiteHeader";
+import { ThemeProvider } from "@/contexts/ThemeContext";
 import type { Metadata } from "next";
 import { Geist, Geist_Mono } from "next/font/google";
 import "./globals.css";
@@ -37,13 +38,15 @@ export default function RootLayout({
       <head>
         <link rel="icon" href="/vd-logo.png" />
       </head>
-      <body className="flex min-h-full flex-col bg-[#E0F7FA] font-medium text-[#01579B] antialiased">
-        <Preloader />
-        <CursorGlow />
-        <GradientBlobs />
-        <SiteHeader />
-        <div className="flex-1">{children}</div>
-        <SiteFooter />
+      <body className="flex min-h-full flex-col font-medium antialiased" style={{ backgroundColor: 'var(--background)', color: 'var(--foreground)' }}>
+        <ThemeProvider>
+          <Preloader />
+          <CursorGlow />
+          <GradientBlobs />
+          <SiteHeader />
+          <div className="flex-1">{children}</div>
+          <SiteFooter />
+        </ThemeProvider>
       </body>
     </html>
   );

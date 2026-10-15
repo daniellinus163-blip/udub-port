@@ -40,26 +40,26 @@ export function ToolsCarousel() {
   const visibleSlides = isMobile ? 1 : 3;
 
   return (
-    <div className="relative w-full py-8 px-4">
+    <div className="relative w-full py-8 px-4 bg-[#F5F5F5] border-y-4 border-black">
       <div className="text-center mb-6">
-        <h3 className="text-2xl font-bold text-[#FFD700] mb-2" style={{ textShadow: '0 0 20px rgba(255, 215, 0, 0.5)' }}>
+        <h3 className="text-2xl font-bold text-black mb-2">
           Tools & Technologies Showcase
         </h3>
-        <p className="text-sm text-[#94A3B8]">Web Apps • Mobile Apps • Development Tools</p>
+        <p className="text-sm text-[#1A1A1A]">Web Apps • Mobile Apps • Development Tools</p>
       </div>
 
       <div className="relative overflow-hidden">
-        <div 
+        <div
           className="flex transition-transform duration-500 ease-in-out"
           style={{ transform: `translateX(-${currentIndex * (100 / visibleSlides)}%)` }}
         >
           {allProjects.map((project, index) => (
-            <div 
+            <div
               key={`${project.slug}-${index}`}
               className="flex-shrink-0 w-full px-2"
               style={{ width: `${100 / visibleSlides}%` }}
             >
-              <div className="glass-card rounded-2xl overflow-hidden h-64 relative group">
+              <div className="border-4 border-black bg-white shadow-[4px_4px_0px_#000000] overflow-hidden h-64 relative group">
                 <div className="relative w-full h-full">
                   <Image
                     src={project.image}
@@ -67,17 +67,17 @@ export function ToolsCarousel() {
                     fill
                     className="object-cover transition-transform duration-300 group-hover:scale-110"
                   />
-                  <div className="absolute inset-0 bg-gradient-to-t from-[#050816] via-transparent to-transparent opacity-80" />
+                  <div className="absolute inset-0 bg-gradient-to-t from-black via-transparent to-transparent opacity-80" />
                   <div className="absolute bottom-0 left-0 right-0 p-4">
-                    <p className="text-xs font-bold uppercase tracking-wider text-[#FFD700] mb-1">
+                    <p className="text-xs font-bold uppercase tracking-wider text-white mb-1">
                       {project.type === 'web' ? 'Web App' : 'Mobile App'}
                     </p>
-                    <h4 className="text-sm font-bold text-[#F8FAFC] mb-2">{project.title}</h4>
+                    <h4 className="text-sm font-bold text-white mb-2">{project.title}</h4>
                     <div className="flex flex-wrap gap-1">
                       {project.technologies.slice(0, 3).map((tech) => (
-                        <span 
+                        <span
                           key={tech}
-                          className="text-xs px-2 py-1 rounded-full bg-[#FFD700]/20 text-[#FFD700] border border-[#FFD700]/30"
+                          className="text-xs px-2 py-1 border-2 border-white bg-white text-black font-bold"
                         >
                           {tech}
                         </span>
@@ -93,15 +93,13 @@ export function ToolsCarousel() {
         {/* Navigation buttons */}
         <button
           onClick={prevSlide}
-          className="absolute left-0 top-1/2 -translate-y-1/2 z-10 w-10 h-10 rounded-full bg-[#FFD700]/20 border border-[#FFD700]/30 flex items-center justify-center text-[#FFD700] hover:bg-[#FFD700]/30 transition-all"
-          style={{ backdropFilter: 'blur(10px)' }}
+          className="absolute left-0 top-1/2 -translate-y-1/2 z-10 w-10 h-10 border-2 border-black bg-white flex items-center justify-center text-black hover:bg-[#F5F5F5] transition-all"
         >
           ←
         </button>
         <button
           onClick={nextSlide}
-          className="absolute right-0 top-1/2 -translate-y-1/2 z-10 w-10 h-10 rounded-full bg-[#FFD700]/20 border border-[#FFD700]/30 flex items-center justify-center text-[#FFD700] hover:bg-[#FFD700]/30 transition-all"
-          style={{ backdropFilter: 'blur(10px)' }}
+          className="absolute right-0 top-1/2 -translate-y-1/2 z-10 w-10 h-10 border-2 border-black bg-white flex items-center justify-center text-black hover:bg-[#F5F5F5] transition-all"
         >
           →
         </button>
@@ -113,10 +111,10 @@ export function ToolsCarousel() {
           <button
             key={index}
             onClick={() => setCurrentIndex(index)}
-            className={`w-2 h-2 rounded-full transition-all ${
-              index === currentIndex 
-                ? 'bg-[#FFD700] w-6' 
-                : 'bg-[#94A3B8]/30 hover:bg-[#94A3B8]/50'
+            className={`w-2 h-2 border-2 border-black transition-all ${
+              index === currentIndex
+                ? 'bg-black w-6'
+                : 'bg-white hover:bg-[#F5F5F5]'
             }`}
           />
         ))}

@@ -7,11 +7,11 @@ type TestimonialCardProps = {
 
 export function TestimonialCard({ image, alt }: TestimonialCardProps) {
   return (
-    <article className="glass-card overflow-hidden rounded-2xl p-2 shadow-lg">
+    <article className="overflow-hidden rounded-2xl p-2 shadow-lg border-4 border-black" style={{ backgroundColor: 'var(--surface-card)' }}>
       <img
         src={image}
         alt={alt}
-        className="max-h-[420px] w-full rounded-xl bg-[rgba(15,23,42,0.8)] object-contain object-top shadow-sm"
+        className="max-h-[420px] w-full rounded-xl object-contain object-top shadow-sm"
       />
     </article>
   );

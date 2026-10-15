@@ -1,6 +1,7 @@
 "use client";
 
 import { VDLogo } from "@/components/brand/VDLogo";
+import { ThemeSwitcher } from "@/components/ThemeSwitcher";
 import { navLinks } from "@/data/portfolioData";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
@@ -10,11 +11,11 @@ export function SiteHeader() {
   const pathname = usePathname();
 
   return (
-    <header className="fixed left-0 right-0 top-0 z-50 border-b border-[rgba(0,229,255,0.15)] bg-[rgba(15,23,42,0.8)] backdrop-blur-xl">
+    <header className="fixed left-0 right-0 top-0 z-50 border-b-2 border-black backdrop-blur-xl" style={{ backgroundColor: 'var(--surface-card)' }}>
       <div className="mx-auto flex max-w-6xl items-center justify-between gap-4 px-5 py-3 md:px-8">
         <Link href="/" className="flex items-center gap-2.5">
           <VDLogo size={36} priority />
-          <span className="text-sm font-bold tracking-tight text-[#F8FAFC]">VIBECODE DAN</span>
+          <span className="text-sm font-bold tracking-tight" style={{ color: 'var(--foreground)' }}>VIBECODE DAN</span>
         </Link>
         <nav className="hidden items-center gap-1 md:flex">
           {navLinks.map((item) => {
@@ -23,15 +24,17 @@ export function SiteHeader() {
               <Link
                 key={item.href}
                 href={item.href}
-                className={`relative rounded-full px-3 py-2 text-xs font-semibold uppercase tracking-wide transition ${
-                  active ? "text-[#00E5FF]" : "text-[#94A3B8] hover:text-[#00E5FF]"
+                className={`relative rounded-sm px-3 py-2 text-xs font-bold uppercase tracking-wide transition border-2 border-transparent hover:border-black ${
+                  active ? "border-black" : ""
                 }`}
+                style={{ color: active ? 'var(--foreground)' : 'var(--text-muted)' }}
               >
                 {item.label}
                 {active ? (
                   <motion.span
                     layoutId="nav-pill"
-                    className="absolute inset-0 -z-10 rounded-full bg-[rgba(0,229,255,0.1)]"
+                    className="absolute inset-0 -z-10 rounded-sm"
+                    style={{ backgroundColor: 'var(--accent-orange)' }}
                     transition={{ type: "spring", stiffness: 380, damping: 30 }}
                   />
                 ) : null}
@@ -39,18 +42,22 @@ export function SiteHeader() {
             );
           })}
         </nav>
-        <Link href="/contact" className="btn-primary hidden rounded-full px-4 py-2 text-xs font-semibold text-[#050816] md:inline-flex">
-          Hire me
-        </Link>
+        <div className="flex items-center gap-3">
+          <ThemeSwitcher />
+          <Link href="/contact" className="btn-primary hidden rounded-sm px-4 py-2 text-xs font-bold text-white md:inline-flex">
+            Hire me
+          </Link>
+        </div>
       </div>
-      <nav className="flex gap-1 overflow-x-auto border-t border-[rgba(0,229,255,0.1)] px-3 py-2 md:hidden">
+      <nav className="flex gap-1 overflow-x-auto border-t-2 border-black px-3 py-2 md:hidden">
         {navLinks.map((item) => (
           <Link
             key={item.href}
             href={item.href}
-            className={`shrink-0 rounded-full px-3 py-1.5 text-[10px] font-semibold uppercase tracking-wide ${
-              pathname === item.href ? "bg-[rgba(0,229,255,0.1)] text-[#00E5FF]" : "text-[#94A3B8]"
+            className={`shrink-0 rounded-sm px-3 py-1.5 text-[10px] font-bold uppercase tracking-wide border-2 border-transparent ${
+              pathname === item.href ? "border-black" : ""
             }`}
+            style={{ color: pathname === item.href ? 'var(--foreground)' : 'var(--text-muted)', backgroundColor: pathname === item.href ? 'var(--accent-orange)' : 'transparent' }}
           >
             {item.label}
           </Link>

@@ -1,32 +1,109 @@
 "use client";
 
-import { services } from "@/data/portfolioData";
 import { motion } from "framer-motion";
-import { ScrollReveal } from "./ScrollReveal";
+import { useRef } from "react";
+
+type ServiceCardProps = {
+  title: string;
+  description: string;
+  icon: string;
+  accent: string;
+  delay: number;
+};
+
+function ServiceCard({ title, description, icon, accent, delay }: ServiceCardProps) {
+  const accentColors: Record<string, string> = {
+    cyan: "bg-[#FF6B35]",
+    purple: "bg-[#7C3AED]",
+    orange: "bg-[#FF6B35]",
+    lime: "bg-[#A3E635]",
+  };
+
+  return (
+    <motion.div
+      initial={{ opacity: 0, y: 30 }}
+      animate={{ opacity: 1, y: 0 }}
+      transition={{ duration: 0.6, delay }}
+      whileHover={{ y: -4 }}
+      className="group relative overflow-hidden border-4 border-black shadow-[4px_4px_0px_#000000] transition-all hover:translate-x-[-2px] hover:translate-y-[-2px] hover:shadow-[6px_6px_0px_#000000]"
+      style={{ backgroundColor: 'var(--surface-card)' }}
+    >
+      <div className="relative p-6 md:p-8">
+        {/* Icon */}
+        <div className="mb-4 text-4xl">
+          {icon}
+        </div>
+
+        {/* Title */}
+        <h3 className="mb-3 text-xl font-bold" style={{ color: 'var(--foreground)' }}>{title}</h3>
+
+        {/* Description */}
+        <p className="text-sm leading-relaxed" style={{ color: 'var(--foreground-secondary)' }}>{description}</p>
+
+        {/* Accent bar */}
+        <div className={`absolute top-0 left-0 w-full h-2 ${accentColors[accent]}`} />
+      </div>
+    </motion.div>
+  );
+}
 
 export function ServicesSection() {
-  return (
-    <section id="services" className="section-spacing bg-[#1c1919] px-5 md:px-8">
-      <div className="mx-auto max-w-6xl">
-        <ScrollReveal>
-          <p className="section-label text-center">What I do</p>
-          <h2 className="mt-3 text-center text-3xl font-extrabold text-[#f5f0f0] md:text-4xl">Services</h2>
-        </ScrollReveal>
+  const services = [
+    {
+      title: "Website Development",
+      description: "Custom responsive websites built with modern frameworks, optimized for performance and conversion.",
+      icon: "🌐",
+      accent: "cyan",
+    },
+    {
+      title: "Web App Development & Bug Fixes",
+      description: "Complex web applications and quick fixes for broken functionality, UI issues, and performance problems.",
+      icon: "⚡",
+      accent: "purple",
+    },
+    {
+      title: "API Integrations",
+      description: "Seamless connections to third-party services, payment gateways, databases, and external systems.",
+      icon: "🔌",
+      accent: "orange",
+    },
+    {
+      title: "CRM Automation",
+      description: "Automated workflows, lead management, and system integrations to streamline your business processes.",
+      icon: "🤖",
+      accent: "lime",
+    },
+    {
+      title: "Business Workflow Automation",
+      description: "End-to-end automation solutions that save time, reduce errors, and improve operational efficiency.",
+      icon: "⚙️",
+      accent: "cyan",
+    },
+  ];
 
-        <div className="mt-12 grid gap-6 md:grid-cols-3">
-          {services.map((service, i) => (
-            <ScrollReveal key={service.title} delay={i * 0.08}>
-              <motion.article
-                whileHover={{ y: -8, scale: 1.02 }}
-                className="glass-card group rounded-3xl p-8 text-center transition-shadow hover:shadow-[0_0_48px_rgba(185,28,60,0.25)]"
-              >
-                <span className="text-4xl" aria-hidden>
-                  {service.icon}
-                </span>
-                <h3 className="mt-4 text-xl font-bold text-[#f5f0f0]">{service.title}</h3>
-                <p className="mt-3 text-sm leading-relaxed text-[#c4b8b8]">{service.description}</p>
-              </motion.article>
-            </ScrollReveal>
+  return (
+    <section className="section-spacing px-5 md:px-8 border-y-4 border-black" style={{ backgroundColor: 'var(--background-secondary)' }}>
+      <div className="mx-auto max-w-6xl">
+        <motion.div
+          initial={{ opacity: 0, y: 20 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true }}
+          transition={{ duration: 0.6 }}
+          className="mb-12"
+        >
+          <p className="section-label">Services</p>
+          <h2 className="mt-2 text-3xl font-bold md:text-4xl" style={{ color: 'var(--foreground)' }}>
+            What I Can Do For You
+          </h2>
+        </motion.div>
+
+        <div className="grid gap-6 md:grid-cols-2 lg:grid-cols-3">
+          {services.map((service, index) => (
+            <ServiceCard
+              key={service.title}
+              {...service}
+              delay={index * 0.1}
+            />
           ))}
         </div>
       </div>

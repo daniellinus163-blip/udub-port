@@ -21,9 +21,9 @@ export default function Home() {
             <div className="mb-10 flex flex-wrap items-end justify-between gap-4">
               <div>
                 <p className="section-label">Featured</p>
-                <h2 className="mt-2 text-3xl font-bold text-[#01579B]">Web app highlights</h2>
+                <h2 className="mt-2 text-3xl font-bold" style={{ color: 'var(--foreground)' }}>Web app highlights</h2>
               </div>
-              <Link href="/projects#web-apps" className="text-sm font-semibold text-[#00BCD4] hover:text-[#03A9F4] transition-colors">
+              <Link href="/projects#web-apps" className="text-sm font-bold border-2 border-black px-4 py-2 transition-colors" style={{ backgroundColor: 'var(--surface-card)', color: 'var(--foreground)' }}>
                 Full showcase →
               </Link>
             </div>
@@ -38,11 +38,11 @@ export default function Home() {
         </div>
       </section>
 
-      <section className="section-spacing overflow-hidden border-y border-[rgba(0,229,255,0.15)] bg-[rgba(15,23,42,0.3)] px-5 md:px-8">
+      <section className="section-spacing overflow-hidden border-y-4 border-black px-5 md:px-8" style={{ backgroundColor: 'var(--background-secondary)' }}>
         <div className="mx-auto max-w-6xl">
           <ScrollReveal>
             <p className="text-center section-label">Client love</p>
-            <h2 className="mt-2 text-center text-2xl font-bold text-[#F8FAFC] md:text-3xl">
+            <h2 className="mt-2 text-center text-2xl font-bold md:text-3xl" style={{ color: 'var(--foreground)' }}>
               Fiverr & direct client reviews
             </h2>
           </ScrollReveal>
@@ -55,21 +55,21 @@ export default function Home() {
       <section className="section-spacing px-5 md:px-8">
         <div className="mx-auto grid max-w-6xl gap-8 md:grid-cols-2">
           <ScrollReveal>
-            <div className="glass-card rounded-2xl p-8">
+            <div className="glass-card border-4 border-black p-8 shadow-[4px_4px_0px_#000000]" style={{ backgroundColor: 'var(--surface-card)' }}>
               <p className="section-label">Web</p>
-              <h3 className="mt-2 text-2xl font-bold text-[#01579B]">{webApps.length} web experiences</h3>
-              <p className="mt-3 text-sm text-muted">Marketplaces, configurators, and live storefronts.</p>
-              <Link href="/web-apps" className="mt-6 inline-block text-sm font-semibold text-[#00BCD4] hover:text-[#03A9F4] transition-colors">
+              <h3 className="mt-2 text-2xl font-bold" style={{ color: 'var(--foreground)' }}>{webApps.length} web experiences</h3>
+              <p className="mt-3 text-sm" style={{ color: 'var(--foreground-secondary)' }}>Marketplaces, configurators, and live storefronts.</p>
+              <Link href="/web-apps" className="mt-6 inline-block text-sm font-bold border-2 border-black px-4 py-2 transition-colors" style={{ backgroundColor: 'var(--surface-card)', color: 'var(--foreground)' }}>
                 Explore web apps →
               </Link>
             </div>
           </ScrollReveal>
           <ScrollReveal delay={0.1}>
-            <div className="glass-card rounded-2xl p-8">
+            <div className="glass-card border-4 border-black p-8 shadow-[4px_4px_0px_#000000]" style={{ backgroundColor: 'var(--surface-card)' }}>
               <p className="section-label">Mobile</p>
-              <h3 className="mt-2 text-2xl font-bold text-[#01579B]">{mobileApps.length} mobile products</h3>
-              <p className="mt-3 text-sm text-muted">Native-feeling flows built for real usage.</p>
-              <Link href="/mobile-apps" className="mt-6 inline-block text-sm font-semibold text-[#00BCD4] hover:text-[#03A9F4] transition-colors">
+              <h3 className="mt-2 text-2xl font-bold" style={{ color: 'var(--foreground)' }}>{mobileApps.length} mobile products</h3>
+              <p className="mt-3 text-sm" style={{ color: 'var(--foreground-secondary)' }}>Native-feeling flows built for real usage.</p>
+              <Link href="/mobile-apps" className="mt-6 inline-block text-sm font-bold border-2 border-black px-4 py-2 transition-colors" style={{ backgroundColor: 'var(--surface-card)', color: 'var(--foreground)' }}>
                 Explore mobile apps →
               </Link>
             </div>

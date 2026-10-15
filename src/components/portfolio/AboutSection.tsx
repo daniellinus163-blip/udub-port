@@ -6,12 +6,11 @@ import { ScrollReveal } from "./ScrollReveal";
 
 export function AboutSection() {
   return (
-    <section id="about" className="section-spacing bg-[#E0F7FA] px-5 md:px-8">
+    <section id="about" className="section-spacing px-5 md:px-8 border-y-4 border-black" style={{ backgroundColor: 'var(--background)' }}>
       <div className="mx-auto grid max-w-6xl items-center gap-10 lg:grid-cols-2 lg:gap-14">
         <ScrollReveal>
           <div className="relative mx-auto max-w-md lg:mx-0">
-            <div className="absolute -inset-3 rounded-3xl bg-gradient-to-br from-[#00BCD4]/40 to-[#03A9F4]/20 blur-2xl" />
-            <div className="glass-card relative overflow-hidden rounded-3xl p-2">
+            <div className="glass-card relative overflow-hidden border-4 border-black p-2 shadow-[4px_4px_0px_#000000]" style={{ backgroundColor: 'var(--surface-card)' }}>
               <div className="relative aspect-[4/5] overflow-hidden rounded-2xl">
                 <Image
                   src={profile.portrait}
@@ -28,22 +27,24 @@ export function AboutSection() {
         <ScrollReveal delay={0.1}>
           <div>
             <p className="section-label">About me</p>
-            <h2 className="mt-3 text-3xl font-extrabold tracking-tight text-[#f5f0f0] md:text-4xl">
+            <h2 className="mt-3 text-3xl font-extrabold tracking-tight md:text-4xl" style={{ color: 'var(--foreground)' }}>
               Building products with clarity & craft
             </h2>
-            <div className="mt-6 space-y-4 text-sm leading-relaxed text-[#c4b8b8] md:text-base">
+            <div className="mt-6 space-y-4 text-sm leading-relaxed md:text-base" style={{ color: 'var(--foreground-secondary)' }}>
               <p>
-                I am <strong className="text-[#f5f0f0]">Daniel</strong>, a <strong className="text-[#f5f0f0]">full-stack web and mobile developer</strong> with{" "}
-                <strong className="text-[#e8a0a8]">{profile.yearsExperience}+ years</strong> shipping real products for
-                clients across the US, Europe, and the UK.
+                Hi, my name is <strong style={{ color: 'var(--foreground)' }}>Daniel</strong>. I'm a full-stack web developer specializing in website development, web app development, 3D configurators, bug fixing, API integrations, CRM, and business automation.
               </p>
               <p>
-                Much of my work comes through <strong className="text-[#f5f0f0]">Fiverr</strong> and direct engagements—
-                marketplaces, configurators, mobile storefronts, and launch experiences delivered on deadline.
+                I help businesses build responsive websites and powerful web applications, create interactive 3D product configurators, fix technical issues, connect third-party services, and automate repetitive tasks. From authentication errors, database issues, and payment integrations to ecommerce platforms, interactive applications, AI-powered tools, 3D visualizations, and CRM workflows, I deliver practical solutions tailored to your needs.
               </p>
               <p>
-                I have completed <strong className="text-[#e8a0a8]">{profile.projectsDelivered} projects</strong>,
-                focused on measurable outcomes: faster releases, cleaner UX, and interfaces people trust.
+                I work with APIs, webhooks, databases, and automation tools to improve application functionality, streamline business processes, and help businesses save time.
+              </p>
+              <p>
+                Whether you need a new application, an existing website fixed, seamless integrations, automated workflows, or 3D configurators, I'm ready to help turn your ideas into reliable digital solutions.
+              </p>
+              <p className="font-bold border-l-4 border-black pl-4" style={{ color: 'var(--accent-orange)' }}>
+                Let's build, fix, integrate, and automate your next project!
               </p>
             </div>
             <div className="mt-8 grid grid-cols-3 gap-3">
@@ -52,9 +53,9 @@ export function AboutSection() {
                 { label: "Projects", value: profile.projectsDelivered },
                 { label: "Clients", value: profile.marketplaces },
               ].map((stat) => (
-                <div key={stat.label} className="glass-card-light rounded-2xl p-4 text-center">
-                  <p className="text-[10px] font-bold uppercase tracking-wider text-[#e8a0a8]">{stat.label}</p>
-                  <p className="mt-1 text-sm font-bold text-[#f5f0f0]">{stat.value}</p>
+                <div key={stat.label} className="border-4 border-black p-4 text-center shadow-[4px_4px_0px_#000000]" style={{ backgroundColor: 'var(--surface-card)' }}>
+                  <p className="text-[10px] font-bold uppercase tracking-wider" style={{ color: 'var(--foreground)' }}>{stat.label}</p>
+                  <p className="mt-1 text-sm font-bold" style={{ color: 'var(--foreground)' }}>{stat.value}</p>
                 </div>
               ))}
             </div>
